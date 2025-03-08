@@ -1,5 +1,5 @@
 <?php
-$servername = "localhost";
+$servername = "82.197.82.123";
 $database = "u351350235_HairByRhi";
 $username = "u351350235_Perry";
 $password = "The12makeit#1";
