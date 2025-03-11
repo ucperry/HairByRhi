@@ -10,8 +10,8 @@ $firstName = $_POST['firstName'];
 $lastName = $_POST['lastName'];
 $email = $_POST['email'];
 $phone = $_POST['phone'];
-$dApptDate = $_POST['dApptDate'];
-$dApptTime  = $_POST['dApptTime'];
+$rApptDate = $_POST['rApptDate'];
+$rApptTime  = $_POST['rApptTime'];
 $clientMessage = $_POST['clientMessage'];
 
 //database connection
@@ -35,8 +35,8 @@ $sql= "INSERT INTO client_appt_request (submissionDate,
                                         lastName, 
                                         email, 
                                         phone, 
-                                        dApptDate, 
-                                        dApptTime, 
+                                        rApptDate, 
+                                        rApptTime, 
                                         clientMessage) 
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
@@ -57,8 +57,8 @@ mysqli_stmt_bind_param  ($stmt, "ssssssssss",
                         $lastName, 
                         $email, 
                         $phone, 
-                        $dApptDate, 
-                        $dApptTime, 
+                        $rApptDate, 
+                        $rApptTime, 
                         $clientMessage);
 
 //execute statement
@@ -68,4 +68,3 @@ mysqli_stmt_execute($stmt);
 echo "Thank you for your appointment request. We will be in touch soon.";
 
 ?>
- 
