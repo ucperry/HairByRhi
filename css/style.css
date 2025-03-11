@@ -7510,9 +7510,9 @@ h1, h2, h3, h4, h5,
     .slider-text .icon .logo h1 {
       font-size: 38px; }
   .slider-text h1 {
-    font-size: 60px;
+    font-size: 30px;
     color: #fff;
-    line-height: 1.2;
+    line-height: 1.0;
     font-weight: 400;
     text-transform: uppercase; }
     @media (max-width: 991.98px) {

@@ -416,31 +416,39 @@
 	    		</div>
 	    		<div class="col-md-6 appointment pl-md-5 ftco-animate">
 	    			<h3 class="mb-3">Appointment Requests</h3>
-	    			<form action="#" class="appointment-form">
+	    			<form action="app-form.php" method="post" class="appointment-form">
 	            <div class="row form-group d-flex">
 	            	<div class="col-md-6">
-	            		<input type="text" class="form-control" placeholder="First Name">
+	            		<input type="text" name="firstName" class="form-control" placeholder="First Name">
 	            	</div>
 	            	<div class="col-md-6">
-	            		<input type="text" class="form-control" placeholder="Last Name">
+	            		<input type="text" name="lastName" class="form-control" placeholder="Last Name">
+	            	</div>
+	            </div>
+				<div class="row form-group d-flex">
+	            	<div class="col-md-6">
+	            		<input type="email" name="email" class="form-control" placeholder="Email">
+	            	</div>
+	            	<div class="col-md-6">
+	            		<input type="tel" name="phone" class="form-control" placeholder="Phone">
 	            	</div>
 	            </div>
 	            <div class="row form-group d-flex">
 	            	<div class="col-md-6">
 	            		<div class="input-wrap">
 		            		<div class="icon"><span class="ion-md-calendar"></span></div>
-		            		<input type="text" id="appointment_date" class="form-control" placeholder="Desired Date">
+		            		<input type="text" name="rApptDate" id="appointment_date" class="form-control" placeholder="Desired Date">
 	            		</div>
 	            	</div>
 	            	<div class="col-md-6">
-	            		<input type="text" class="form-control" placeholder="Phone">
+	            		<input type="text" name="rApptTime" class="form-control" placeholder="Time">
 	            	</div>
 	            </div>
 	            <div class="form-group">
-	              <textarea name="" id="" cols="30" rows="3" class="form-control" placeholder="Message"></textarea>
+	              <textarea name="clientMessage" id="" cols="30" rows="3" class="form-control" placeholder="Message"></textarea>
 	            </div>
 	            <div class="form-group">
-	              <input type="submit" value="Order" class="btn btn-white btn-outline-white py-3 px-4">
+	              <input type="submit" value="Request" class="btn btn-white btn-outline-white py-3 px-4">
 	            </div>
 	          </form>
 	    		</div>    			
