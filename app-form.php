@@ -1,17 +1,17 @@
 <?php
 
 //autocapture form data
-$submissionDate = date('Y-m-d');
-$submissionTime = date('h:i:sa');
+$submissionDate = date('m/d/Y h:i:s a', time());
 $ipAddress = $_SERVER['REMOTE_ADDR'];
+$referer = $_SERVER['HTTP_REFERER'];
 
 //form collected data
 $firstName = $_POST['firstName'];
 $lastName = $_POST['lastName'];
 $email = $_POST['email'];
 $phone = $_POST['phone'];
-$rApptDate = $_POST['rApptDate'];
-$rApptTime  = $_POST['rApptTime'];
+$rApptDate = date('Y-m-d', strtotime($_POST['rApptDate']));
+$rApptTime = date("g:i a", strtotime($_POST['rApptTime']));
 $clientMessage = $_POST['clientMessage'];
 
 //database connection
@@ -29,8 +29,8 @@ if (mysqli_connect_error()) {
 
 //insert data into database
 $sql= "INSERT INTO client_appt_request (submissionDate, 
-                                        submissionTime, 
                                         ipAddress, 
+                                        referer, 
                                         firstName, 
                                         lastName, 
                                         email, 
@@ -57,8 +57,8 @@ mysqli_stmt_bind_param  ($stmt, "ssssssssss",
                         $lastName, 
                         $email, 
                         $phone, 
-                        $rApptDate, 
-                        $rApptTime, 
+                        $dApptDate, 
+                        $dApptTime, 
                         $clientMessage);
 
 //execute statement
@@ -68,3 +68,4 @@ mysqli_stmt_execute($stmt);
 echo "Thank you for your appointment request. We will be in touch soon.";
 
 ?>
+ 
