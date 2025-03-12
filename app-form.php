@@ -13,18 +13,24 @@ if (mysqli_connect_error()) {
     die("Connection error: " . mysqli_connect_error());
 }
 
-//autocapture form data
+
+
+//autocapture Sumbission data
 $submissionDate = date("Y-m-d H:i:s");
 $ipAddress = $_SERVER['REMOTE_ADDR'];
 $referer = $_SERVER['HTTP_REFERER'];
 
-//form collected data
+//formcapture user input data
 $firstName = $_POST['firstName'];
 $lastName = $_POST['lastName'];
 $email = $_POST['email'];
 $phone = $_POST['phone'];
-$rApptDate = date('Y-m-d', strtotime($_POST['rApptDate']));
-$rApptTime = date("g:i a", strtotime($_POST['rApptTime']));
+
+// Using DateTime class to handle date and time with mm/dd/yyyy format
+$rApptDate = DateTime::createFromFormat('m/d/Y', $_POST['rApptDate'])->format('Y-m-d');
+$rApptTime = DateTime::createFromFormat('h:i a', $_POST['rApptTime'])->format('H:i:s');
+
+// Client specifics regaurding the services required or curiosities to the stylists availability
 $clientMessage = $_POST['clientMessage'];
 
 
