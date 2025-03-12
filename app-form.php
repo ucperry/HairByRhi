@@ -1,7 +1,20 @@
 <?php
 
+//database Information
+$servername = "82.197.82.123";
+$database = "u351350235_HairByRhi";
+$username = "u351350235_Perry";
+$password = "The12makeit#1";
+
+// Create connection
+$conn = mysqli_connect($servername, $username, $password, $database);
+
+if (mysqli_connect_error()) {
+    die("Connection error: " . mysqli_connect_error());
+}
+
 //autocapture form data
-$submissionDate = date('m/d/Y h:i:s a', time());
+$submissionDate = date("Y-m-d H:i:s");
 $ipAddress = $_SERVER['REMOTE_ADDR'];
 $referer = $_SERVER['HTTP_REFERER'];
 
@@ -14,18 +27,6 @@ $rApptDate = date('Y-m-d', strtotime($_POST['rApptDate']));
 $rApptTime = date("g:i a", strtotime($_POST['rApptTime']));
 $clientMessage = $_POST['clientMessage'];
 
-//database connection
-$servername = "82.197.82.123";
-$database = "u351350235_HairByRhi";
-$username = "u351350235_Perry";
-$password = "The12makeit#1";
-
-// Create connection
-$conn = mysqli_connect($servername, $username, $password, $database);
-
-if (mysqli_connect_error()) {
-    die("Connection error: " . mysqli_connect_error());
-}
 
 //insert data into database
 $sql= "INSERT INTO client_appt_request (submissionDate, 
