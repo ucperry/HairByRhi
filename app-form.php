@@ -13,8 +13,6 @@ if (mysqli_connect_error()) {
     die("Connection error: " . mysqli_connect_error());
 }
 
-
-
 //autocapture Sumbission data
 $submissionDate = date("Y-m-d H:i:s");
 $ipAddress = $_SERVER['REMOTE_ADDR'];
@@ -26,13 +24,16 @@ $lastName = $_POST['lastName'];
 $email = $_POST['email'];
 $phone = $_POST['phone'];
 
-// Using DateTime class to handle date and time with mm/dd/yyyy format
-$rApptDate = DateTime::createFromFormat('m/d/Y', $_POST['rApptDate'])->format('Y-m-d');
-$rApptTime = DateTime::createFromFormat('h:i a', $_POST['rApptTime'])->format('H:i:s');
+// html form <input type="text" name="rApptDate">
+//  the form date capture string format output is m/d/Y
+$rApptDate = date('Y-m-d', strtotime($_POST['rApptDate']));
+
+// html form <input type="time" name="rApptTime">
+// the form time capture string format is (H:i)
+$rApptTime = DateTime::createFromFormat('H:i', $_POST['rApptTime'])->format('H:i:s');
 
 // Client specifics regaurding the services required or curiosities to the stylists availability
 $clientMessage = $_POST['clientMessage'];
-
 
 //insert data into database
 $sql= "INSERT INTO client_appt_request (submissionDate, 
@@ -72,7 +73,16 @@ mysqli_stmt_bind_param  ($stmt, "ssssssssss",
 mysqli_stmt_execute($stmt);
 
 //close statement
-echo "Thank you for your appointment request. We will be in touch soon.";
+mysqli_stmt_close($stmt);
+mysqli_close($conn);
 
+//restating the information entered into the form
+echo "Thank you for your appointment request. We have received the following information:<br>";
+echo "First Name: " . htmlspecialchars($firstName) . "<br>";
+echo "Last Name: " . htmlspecialchars($lastName) . "<br>";
+echo "Email: " . htmlspecialchars($email) . "<br>";
+echo "Phone: " . htmlspecialchars($phone) . "<br>";
+echo "Desired Appointment Date: " . htmlspecialchars($rApptDate) . "<br>";
+echo "Desired Appointment Time: " . htmlspecialchars($rApptTime) . "<br>";
+echo "Message: " . htmlspecialchars($clientMessage) . "<br>";
 ?>
- 
