@@ -65,8 +65,8 @@ mysqli_stmt_bind_param  ($stmt, "ssssssssss",
                         $lastName, 
                         $email, 
                         $phone, 
-                        $dApptDate, 
-                        $dApptTime, 
+                        $rApptDate, 
+                        $rApptTime, 
                         $clientMessage);
 
 //execute statement
