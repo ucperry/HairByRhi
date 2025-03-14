@@ -32,6 +32,9 @@ $rApptDate = date('Y-m-d', strtotime($_POST['rApptDate']));
 // the form time capture string format is (H:i)
 $rApptTime = DateTime::createFromFormat('H:i', $_POST['rApptTime'])->format('H:i:s');
 
+// Convert rApptTime to 'h:i a' format
+$rApptTimeFormatted = DateTime::createFromFormat('H:i', $_POST['rApptTime'])->format('h:i a');
+
 // Client specifics regaurding the services required or curiosities to the stylists availability
 $clientMessage = $_POST['clientMessage'];
 
@@ -83,6 +86,6 @@ echo "Last Name: " . htmlspecialchars($lastName) . "<br>";
 echo "Email: " . htmlspecialchars($email) . "<br>";
 echo "Phone: " . htmlspecialchars($phone) . "<br>";
 echo "Desired Appointment Date: " . htmlspecialchars($rApptDate) . "<br>";
-echo "Desired Appointment Time: " . htmlspecialchars($rApptTime) . "<br>";
+echo "Desired Appointment Time: " . htmlspecialchars($rApptTimeFormatted) . "<br>";
 echo "Message: " . htmlspecialchars($clientMessage) . "<br>";
 ?>
