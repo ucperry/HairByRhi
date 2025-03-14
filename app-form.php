@@ -8,7 +8,6 @@ $password = "The12makeit#1";
 
 // Create connection
 $conn = mysqli_connect($servername, $username, $password, $database);
-
 if (mysqli_connect_error()) {
     die("Connection error: " . mysqli_connect_error());
 }
@@ -18,7 +17,7 @@ $submissionDate = date("Y-m-d H:i:s");
 $ipAddress = $_SERVER['REMOTE_ADDR'];
 $referer = $_SERVER['HTTP_REFERER'];
 
-//formcapture user input data
+//User Submitted ID Data
 $firstName = $_POST['firstName'];
 $lastName = $_POST['lastName'];
 $email = $_POST['email'];
@@ -51,10 +50,10 @@ $sql= "INSERT INTO client_appt_request (submissionDate,
                                         clientMessage) 
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-//prepare statement
+//initialize statement
 $stmt = mysqli_stmt_init($conn);
 
-//check if statement is valid
+//prepare statement
 if (! mysqli_stmt_prepare($stmt, $sql)) {
     die(mysqli_connect_error($conn));
 }
