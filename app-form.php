@@ -14,7 +14,25 @@ if (mysqli_connect_error()) {
 
 //autocapture Sumbission data
 $submissionDate = date("Y-m-d H:i:s");
-$ipAddress = $_SERVER['REMOTE_ADDR'];
+function get_client_ip() {
+    $ipAddress = '';
+    if ($_SERVER['HTTP_CLIENT_IP'])
+        $ipAddress = $_SERVER['HTTP_CLIENT_IP'];
+    else if ($_SERVER['HTTP_X_FORWARDED_FOR'])
+        $ipAddress = $_SERVER['HTTP_X_FORWARDED_FOR'];
+    else if ($_SERVER['HTTP_X_FORWARDED'])
+        $ipAddress = $_SERVER['HTTP_X_FORWARDED'];
+    else if ($_SERVER['HTTP_FORWARDED_FOR'])
+        $ipAddress = $_SERVER['HTTP_FORWARDED_FOR'];
+    else if ($_SERVER['HTTP_FORWARDED'])
+        $ipAddress = $_SERVER['HTTP_FORWARDED'];
+    else if ($_SERVER['REMOTE_ADDR'])
+        $ipAddress = $_SERVER['REMOTE_ADDR'];
+    else
+        $ipAddress = 'UNKNOWN';
+
+    return $ipAddress;
+}
 $referer = $_SERVER['HTTP_REFERER'];
 
 //User Submitted ID Data
