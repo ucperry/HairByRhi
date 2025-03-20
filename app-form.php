@@ -1,12 +1,12 @@
 <?php
 
-//database Information
+//Basic Database Information
 $servername = "82.197.82.123";
 $database = "u351350235_HairByRhi";
 $username = "u351350235_Perry";
 $password = "The12makeit#1";
 
-// Create connection
+// Create the connection
 $conn = mysqli_connect($servername, $username, $password, $database);
 if (mysqli_connect_error()) {
     die("Connection error: " . mysqli_connect_error());
@@ -35,18 +35,16 @@ function get_client_ip() {
 }
 $referer = $_SERVER['HTTP_REFERER'];
 
-//User Submitted ID Data
+//The User Submitted ID Data
 $firstName = $_POST['firstName'];
 $lastName = $_POST['lastName'];
 $email = $_POST['email'];
 $phone = $_POST['phone'];
 
-// html form <input type="text" name="rApptDate">
-//  the form date capture string format output is m/d/Y
+//  The form date capture string format output is m/d/Y
 $rApptDate = date('Y-m-d', strtotime($_POST['rApptDate']));
 
-// html form <input type="time" name="rApptTime">
-// the form time capture string format is (H:i)
+// The form time capture string format is (H:i)
 $rApptTime = DateTime::createFromFormat('H:i', $_POST['rApptTime'])->format('H:i:s');
 
 // Convert rApptTime to 'h:i a' format
