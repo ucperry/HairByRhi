@@ -33,6 +33,7 @@ function get_client_ip() {
 
     return $ipAddress;
 }
+$clientipAddress = get_client_ip();
 $referer = $_SERVER['HTTP_REFERER'];
 
 //The User Submitted ID Data
@@ -55,7 +56,7 @@ $clientMessage = $_POST['clientMessage'];
 
 //insert data into database
 $sql= "INSERT INTO client_appt_request (submissionDate, 
-                                        ipAddress, 
+                                        clientipAddress, 
                                         referer, 
                                         firstName, 
                                         lastName, 
@@ -78,7 +79,7 @@ if (! mysqli_stmt_prepare($stmt, $sql)) {
 mysqli_stmt_bind_param  ($stmt, "ssssssssss", 
                         $submissionDate, 
                         $submissionTime,   
-                        $ipAddress, 
+                        $clientipAddress, 
                         $firstName, 
                         $lastName, 
                         $email, 
